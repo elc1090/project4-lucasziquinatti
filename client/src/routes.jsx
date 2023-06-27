@@ -4,6 +4,7 @@ import Home from './pages/Home';
 
 import { AuthContext, AuthProvider } from './contexts/auth';
 import { useContext } from 'react';
+import SignUp from './pages/SignUp';
 
 export default function AppRoutes(){
     const PrivateRoute = ({ children }) => {
@@ -25,6 +26,7 @@ export default function AppRoutes(){
             <AuthProvider>
                 <Routes>
                     <Route exact path='/login' element={<Login/>} />
+                    <Route exact path='/cadastro' element={<SignUp/>} />
                     <Route exact path='/' element={
                         <PrivateRoute>
                             <Home/>

@@ -3,21 +3,33 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 exports.login = async (req, res) => {
+
+    const user = res.locals.result;
+    // console.log(user);
+
     try {
-        const { name, password } = req.body;
-        const token = null;
+        const { username, password } = req.body;
+        let token = null;
 
-        if (name && password) {
-            const { username, passwordHash, privateKey } = process.env;
-            let match = await bcrypt.compare(password, passwordHash)
-
-            if (name === username && match) {
+        if (username && password) {
+            // const { username, passwordHash, privateKey } = process.env;
+            const { privateKey } = process.env;
+            // let match = await bcrypt.compare(password, passwordHash)
+            let match = password === user.password;
+            
+            if (username === user.username && match) {
                 token = await jwt.sign({ username: username }, privateKey, { expiresIn: '1h' });
             }
         }
-
         if (token) {
-            return res.json({ token: token, username: username })
+            return res.json({ 
+                token: token,
+                user:{
+                    username: username,
+                    bestTime:user.bestTime,
+                    idSkin:user.idSkin,
+                },
+            });
         }
         return res.sendStatus(401);
     }

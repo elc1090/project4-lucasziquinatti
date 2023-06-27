@@ -1,0 +1,19 @@
+.field {
+    padding-bottom: 0.5rem;
+}
+
+.field label {
+    display: block;
+}
+
+.field input {
+    width: 100%;
+}
+
+.fieldError label {
+    color: red;
+}
+
+.fieldError input {
+    border: 2px solid red;
+}

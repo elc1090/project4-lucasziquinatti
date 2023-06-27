@@ -11,6 +11,7 @@ module.exports = () => {
     app.use(express.json());
 
     app.use('/', require('../routes/authentication'));
+    app.use('/', require('../routes/db_connection'));
 
     return app;
 };
