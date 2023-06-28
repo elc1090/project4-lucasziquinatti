@@ -12,6 +12,10 @@ export const createSession = async (username, password) => {
     return api.post('/login', { username, password });
 }
 
+export const logoutAccount = async () => {
+    return api.get('/logout');
+}
+
 export const getUsers = async () => {
     return api.get('/users');
 }

@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { api, createSession, registerAccount } from "../services/api";
+import { api, createSession, registerAccount, logoutAccount } from "../services/api";
 
 export const AuthContext = createContext();
 
@@ -26,29 +26,26 @@ export const AuthProvider = ({ children }) => {
     const login = async (userData) => {
         const response = await createSession(userData.username, userData.password);
 
-        if(response.status === 401 || response.status === 404){
+        if(!response.data.find){
             console.log('Usuário ou Senha incorretos!!');
-        }
-        else if(response.status === 500){
-            console.log('Ocorreu um erro interno do servidor!');
         }
         else {
             const loggedUser = response.data.user;
             const token = response.data.token;
-            
-            console.log(loggedUser);
-            console.log(token);
-            // localStorage.setItem('user', JSON.stringify(loggedUser));
-            // localStorage.setItem('token', JSON.stringify(token));
+
+            localStorage.setItem('user', JSON.stringify(loggedUser));
+            localStorage.setItem('token', JSON.stringify(token));
     
-            // api.defaults.headers.Authorization = `Bearer ${token}`;
+            api.defaults.headers.Authorization = `Bearer ${token}`;
     
-            // setUser(loggedUser);
-            // navigate('/');
+            setUser(loggedUser);
+            navigate('/profile');
         }
     }
 
-    const logout = () => {
+    const logout = async () => {
+        const response = await logoutAccount();
+
         localStorage.removeItem('user');
         localStorage.removeItem('token');
 
@@ -69,7 +66,7 @@ export const AuthProvider = ({ children }) => {
         else if(response.status === 201){
             console.log('Usuário criado');
             setExist(false);
-            navigate('/');
+            navigate('/login');
         }
     }
 

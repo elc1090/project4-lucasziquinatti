@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import { AuthContext, AuthProvider } from './contexts/auth';
 import { useContext } from 'react';
 import SignUp from './pages/SignUp';
+import Profile from './pages/Profile';
+import BasePage from './pages/BasePage';
 
 export default function AppRoutes(){
     const PrivateRoute = ({ children }) => {
@@ -25,13 +27,16 @@ export default function AppRoutes(){
         <Router>
             <AuthProvider>
                 <Routes>
-                    <Route exact path='/login' element={<Login/>} />
-                    <Route exact path='/cadastro' element={<SignUp/>} />
-                    <Route exact path='/' element={
-                        <PrivateRoute>
-                            <Home/>
-                        </PrivateRoute>
-                    } />
+                    <Route exact path='/' element={<BasePage/>}>
+                        <Route index element={<Home/>} />
+                        <Route exact path='/login' element={<Login/>} />
+                        <Route exact path='/cadastro' element={<SignUp/>} />
+                        <Route exact path='/profile' element={
+                            <PrivateRoute>
+                                <Profile/>
+                            </PrivateRoute>
+                        } />
+                    </Route>
                 </Routes>
             </AuthProvider>
         </Router>

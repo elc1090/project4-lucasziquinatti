@@ -49,6 +49,6 @@ exports.find_user = async (req, res, next) => {
         next();
     }
     else {
-        return res.sendStatus(404);
+        return res.status(200).json({ find: false });
     }
 }

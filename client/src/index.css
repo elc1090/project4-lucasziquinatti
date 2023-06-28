@@ -1,15 +1,23 @@
 :root {
   --gray: #6d6d6d;
-  --green: #016301;
+  --light-gray: #9a9a9a;
+
+  --superlightgreen: #59c65d;
+  --lightgreen: #49a54c;
+  --green: #3e8e41;
+  --darkgreen: #316f33;
 }
 
 html {
   box-sizing: border-box;
+  padding: 0;
 }
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -19,6 +27,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--green);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--superlightgreen);
+  border-radius: 20px;
 }
 
 code {
