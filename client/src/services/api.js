@@ -12,10 +12,18 @@ export const createSession = async (username, password) => {
     return api.post('/login', { username, password });
 }
 
+export const verifyToken = async () => {
+    return api.get('/verify');
+}
+
 export const logoutAccount = async () => {
     return api.get('/logout');
 }
 
 export const getRanking = async () => {
     return api.get('/ranking');
+}
+
+export const updateAccount = async (user) => {
+    return api.post('/update', {userData: user});
 }

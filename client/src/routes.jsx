@@ -8,6 +8,7 @@ import SignUp from './pages/SignUp';
 import Profile from './pages/Profile';
 import BasePage from './pages/BasePage';
 import Game from './pages/Game';
+import ChangeChar from './pages/ChangeChar';
 
 export default function AppRoutes(){
     const PrivateRoute = ({ children }) => {
@@ -40,6 +41,11 @@ export default function AppRoutes(){
                         <Route exact path='/game' element={
                             <PrivateRoute>
                                 <Game />
+                            </PrivateRoute>
+                        } />
+                        <Route exact path='/change' element={
+                            <PrivateRoute>
+                                <ChangeChar />
                             </PrivateRoute>
                         } />
                     </Route>

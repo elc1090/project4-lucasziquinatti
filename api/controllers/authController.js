@@ -49,10 +49,13 @@ exports.verifyToken = (req, res, next) => {
                 req.user = { username: data.username, verified: true };
                 next();
             }
+            else {
+                return res.status(200).json({ verified: false });
+            }
         })
     }
     else {
-        return res.sendStatus(403); //Forbidden
+        return res.status(200).json({ verified: false }); //Forbidden
     }
 }
 
@@ -82,4 +85,8 @@ exports.logout = (req, res) => {
         //add bearerToken to blacklist
     }
     return res.sendStatus(200)
+}
+
+exports.returns = (req, res) => {
+    return res.status(200).json({ verified: true });
 }

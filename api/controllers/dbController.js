@@ -99,3 +99,27 @@ exports.get_ranking = async (req, res) => {
         ],
     })
 }
+
+exports.user_update = async (req, res) => {
+    try{
+        const { userData } = req.body;
+
+        const db = await connectionToDatabase();
+        let collection = await db.collection('users');
+
+        let query = { username:userData.username };
+        let updates = {
+            $set: {
+                idSkin: userData.idSkin,
+                bestTime: userData.bestTime
+            },
+        };
+
+        let result = await collection.updateOne(query, updates);
+        return res.sendStatus(200);
+
+    } catch (err) {
+        console.log(err);
+        return res.sendStatus(500); //Internal Server Error
+    }
+}

@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { api, createSession, registerAccount, logoutAccount } from "../services/api";
+import { api, createSession, registerAccount, logoutAccount, verifyToken, updateAccount } from "../services/api";
 
 export const AuthContext = createContext();
 
@@ -12,13 +12,23 @@ export const AuthProvider = ({ children }) => {
     const [exist, setExist] = useState(false);
 
     useEffect(() => {
+        const tokenValid = async () => {
+            const response = await verifyToken();
+            if(!response.data.verified){
+                logout();
+            }
+        }
+
         const recoveredUser = localStorage.getItem('user');
         const token = localStorage.getItem('token');
+
 
         if(recoveredUser && token){
             setUser(JSON.parse(recoveredUser));
             api.defaults.headers.Authorization = `Bearer ${token}`;
         }
+
+        tokenValid();
 
         setLoading(false);
     }, []);
@@ -70,9 +80,22 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    const update = async (userData) => {
+        const response = await updateAccount(userData);
+
+        // console.log(response);
+
+        if(response.status === 200){
+            localStorage.setItem('user', JSON.stringify(userData));
+            setUser(userData);
+        }
+        
+        navigate('/profile');
+    }
+
     return(
         <AuthContext.Provider
-            value={{ authenticated: !!user, user, loading, exist, login, logout, signup, setExist }}
+            value={{ authenticated: !!user, user, loading, exist, login, logout, signup, setExist, update }}
         >
             {children}
         </AuthContext.Provider>

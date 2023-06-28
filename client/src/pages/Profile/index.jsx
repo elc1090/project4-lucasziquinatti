@@ -25,7 +25,7 @@ export default function Profile(){
                     <p className={styles.username}>{user.username}</p>
                     <p className={styles.time}>MELHOR TEMPO<br></br>{parseInt(user.bestTime / 60)}min e {parseInt(user.bestTime % 60)}s</p>
                     <div className={styles.options}>
-                        <button onClick={() => changePage('#')}>Mudar Personagem</button>
+                        <button onClick={() => changePage('change')}>Mudar Personagem</button>
                         <button onClick={() => changePage('game')}>Jogar</button>
                     </div>
                 </div>
