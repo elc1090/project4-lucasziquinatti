@@ -22,8 +22,8 @@ export default function Login(){
 
     return(
         <section className={styles.login}>
-            <h2 className={styles.title}>Login</h2>
             <form className={styles.formulario} onSubmit={handleSubmit}>
+                <h2 className={styles.title}>ENTRAR</h2>
                 <div className={styles.field}>
                     <label htmlFor="username">Usuário</label>
                     <input type='text' name="username" id="username" value={user.username} onChange={handleChange}/>

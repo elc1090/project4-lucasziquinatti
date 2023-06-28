@@ -1,0 +1,10 @@
+.footer {
+    background-color: var(--gray);
+    min-height: 50px;
+}
+
+.footer p {
+    padding: 8px;
+    font-size: 1.2em;
+    text-align: center;
+}

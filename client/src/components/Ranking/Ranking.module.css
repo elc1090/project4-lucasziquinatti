@@ -1,0 +1,30 @@
+.rank {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+
+    padding: 24px;
+    margin: 24px auto;
+
+    border-radius: 52px;
+    box-shadow: -5px 10px var(--darkgreen);
+    background-color: var(--lightgreen);
+}
+
+.title {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 12px;
+}
+
+.table th {
+    padding: 5px;
+    font-size: 1.5em;
+    border-bottom: 2px solid var(--orange);
+}
+
+.table td {
+    font-size: 1.2em;
+    text-align: center;
+    padding: 5px 0;
+}

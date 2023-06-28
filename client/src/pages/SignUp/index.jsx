@@ -69,8 +69,8 @@ export default function SignUp(){
                 />:
                 ''
             }
-            <h2 className={styles.title}>Cadastro</h2>
             <form className={styles.formulario} onSubmit={handleSubmit}>
+                <h2 className={styles.title}>CRIAR CONTA</h2>
                 <Input 
                     handleChange={handleChange}
                     value={user.username}

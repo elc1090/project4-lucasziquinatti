@@ -16,6 +16,6 @@ export const logoutAccount = async () => {
     return api.get('/logout');
 }
 
-export const getUsers = async () => {
-    return api.get('/users');
+export const getRanking = async () => {
+    return api.get('/ranking');
 }

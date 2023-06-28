@@ -51,7 +51,9 @@ exports.verifyToken = (req, res, next) => {
             }
         })
     }
-    return res.sendStatus(403); //Forbidden
+    else {
+        return res.sendStatus(403); //Forbidden
+    }
 }
 
 exports.updatePassword = async (req, res) => {

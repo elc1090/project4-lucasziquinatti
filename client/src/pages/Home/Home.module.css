@@ -21,7 +21,7 @@
     background-color: var(--lightgreen);
     border: none;
     border-radius: 15px;
-    box-shadow: 0 9px #316f33;
+    box-shadow: 0 9px var(--darkgreen);
     margin: 0 24px;
   }
   
@@ -36,6 +36,41 @@
 }
 
 .logo {
-    width: 60%;
+    min-width: 40%;
     margin-bottom: 24px;
+    image-resolution: 600dpi;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    margin: 52px auto;
+    max-width: 60%;
+
+    padding: 52px;
+    border-radius: 52px;
+    box-shadow: -5px 10px var(--darkgreen);
+
+    background-color: var(--lightgreen);
+}
+
+.text h2 {
+    text-align: center;
+    font-size: 2em;
+}
+
+.text p {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 24px;
+}
+
+.links img {
+    width: 90px;
 }

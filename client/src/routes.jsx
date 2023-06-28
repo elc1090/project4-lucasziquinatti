@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import SignUp from './pages/SignUp';
 import Profile from './pages/Profile';
 import BasePage from './pages/BasePage';
+import Game from './pages/Game';
 
 export default function AppRoutes(){
     const PrivateRoute = ({ children }) => {
@@ -34,6 +35,11 @@ export default function AppRoutes(){
                         <Route exact path='/profile' element={
                             <PrivateRoute>
                                 <Profile/>
+                            </PrivateRoute>
+                        } />
+                        <Route exact path='/game' element={
+                            <PrivateRoute>
+                                <Game />
                             </PrivateRoute>
                         } />
                     </Route>

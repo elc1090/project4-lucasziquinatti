@@ -8,26 +8,70 @@
 }
 
 .formulario {
-    background-color: var(--gray);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 400px;
+
     width: 100%;
     max-width: 480px;
-    padding: 0.5rem;
+    padding: 1rem;
+
+    border-radius: 52px;
+    box-shadow: -5px 10px var(--darkgreen);
+
+    background-color: var(--lightgreen);
+}
+
+.title {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 12px;
 }
 
 .field {
-    padding-bottom: 0.5rem;;
+    padding-bottom: 0.5rem;
+    font-size: 1.3em;
 }
 
 .field label {
     display: block;
+    margin-bottom: 5px;
 }
 
 .field input {
     width: 100%;
+    font-size: 1.3em;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
 }
 
 .actions {
     text-align: center;
-    margin-top: 0.5rem;
+    margin-top: 42px;
 }
 
+.actions button {
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    background-color: var(--lightorange);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px var(--darkorange);
+    margin: 0 24px;
+  }
+  
+.actions button:hover {
+    background-color: var(--orange);
+}
+  
+.actions button:active {
+    background-color: var(--orange);
+    box-shadow: 0 5px var(--darkorange);
+    transform: translateY(4px);
+}

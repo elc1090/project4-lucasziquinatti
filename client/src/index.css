@@ -1,11 +1,18 @@
 :root {
+  --darkgray: #414141;
   --gray: #6d6d6d;
-  --light-gray: #9a9a9a;
+  --lightgray: #9a9a9a;
+  --superlightgray: #c5c5c5;
 
   --superlightgreen: #59c65d;
   --lightgreen: #49a54c;
   --green: #3e8e41;
   --darkgreen: #316f33;
+
+  --softorange: #bef7a4;
+  --lightorange: #ff7b00;
+  --orange: #e67003;
+  --darkorange: #c56002;
 }
 
 html {
@@ -27,6 +34,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: var(--softorange);
+  font-weight: 600;
 }
 
 body::-webkit-scrollbar {

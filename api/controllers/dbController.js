@@ -52,3 +52,50 @@ exports.find_user = async (req, res, next) => {
         return res.status(200).json({ find: false });
     }
 }
+
+exports.get_ranking = async (req, res) => {
+    return res.status(200).json({
+        rank: [
+            {
+                username: 'testeBot',
+                bestTime: 150,
+            },
+            {
+                username: 'Lucas',
+                bestTime: 0,
+            },
+            {
+                username: 'testeBot2.0',
+                bestTime: 0,
+            },
+            {
+                username: 'testeBot2.0',
+                bestTime: 0,
+            },
+            {
+                username: 'testeBot2.0',
+                bestTime: 0,
+            },
+            {
+                username: 'testeBot2.0',
+                bestTime: 0,
+            },
+            {
+                username: 'testeBot2.0',
+                bestTime: 0,
+            },
+            {
+                username: 'testeBot2.0',
+                bestTime: 0,
+            },
+            {
+                username: 'testeBot2.0',
+                bestTime: 0,
+            },
+            {
+                username: 'testeBot2.0',
+                bestTime: 0,
+            },
+        ],
+    })
+}

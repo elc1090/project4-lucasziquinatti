@@ -1,13 +1,19 @@
 .field {
     padding-bottom: 0.5rem;
+    font-size: 1.3em;
 }
 
 .field label {
     display: block;
+    margin-bottom: 5px;
 }
 
 .field input {
     width: 100%;
+    font-size: 1.3em;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
 }
 
 .fieldError label {
@@ -15,5 +21,5 @@
 }
 
 .fieldError input {
-    border: 2px solid red;
+    border: 5px solid red;
 }

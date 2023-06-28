@@ -1,41 +1,45 @@
-.signup {
+.profile{
+    width: 70%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 0 2rem;
-}
 
-.formulario {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 500px;
-
-    width: 100%;
-    max-width: 480px;
-    padding: 1rem;
+    padding: 24px;
+    margin: 24px auto;
 
     border-radius: 52px;
     box-shadow: -5px 10px var(--darkgreen);
-
     background-color: var(--lightgreen);
 }
 
-.title {
-    text-align: center;
+.infos {
+    width: 100%;
+    margin-left: 12px;
+}
+
+.char img{
+    border-radius: 25px;
+}
+
+.username {
+    padding: 10px 24px;
     font-size: 2em;
-    margin-bottom: 12px;
+    font-weight: bold;
+    border-bottom: 5px solid var(--lightorange);
 }
 
-.actions {
+.time {
+    padding: 52px;
     text-align: center;
-    margin-top: 42px;
+    font-size: 2.2em;
+    color: white;
 }
 
-.actions button {
-    padding: 15px 25px;
+.options {
+    display: flex;
+    justify-content: center;
+}
+
+.options button {
+    padding: 15px 50px;
     font-size: 24px;
     text-align: center;
     cursor: pointer;
@@ -48,11 +52,11 @@
     margin: 0 24px;
   }
   
-.actions button:hover {
+.options button:hover {
     background-color: var(--orange);
 }
   
-.actions button:active {
+.options button:active {
     background-color: var(--orange);
     box-shadow: 0 5px var(--darkorange);
     transform: translateY(4px);
