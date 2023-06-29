@@ -5,6 +5,7 @@ import { AuthContext } from "../../contexts/auth";
 import styles from "./SignUp.module.css";
 import Input from "../../components/Input";
 import PopUp from "../../components/PopUp";
+import Button from "../../components/Button";
 
 export default function SignUp(){
     const { signup, exist, setExist } = useContext(AuthContext);
@@ -14,6 +15,9 @@ export default function SignUp(){
     const [errorUser, setErrorUser] = useState(false);
     const [messagePass, setMessagePass] = useState('');
     const [messageUser, setMessageUser] = useState('');
+
+    const brick_wall = process.env.PUBLIC_URL + "/assets/brick-wall2.jpg";
+    const background_image2 = process.env.PUBLIC_URL + "/assets/background_2.png";
 
     useEffect(() => {
         if(exist){
@@ -51,7 +55,10 @@ export default function SignUp(){
     }
 
     return(
-        <section className={styles.signup}>
+        <section 
+            className={styles.signup}
+            style={{ backgroundImage: `url('${background_image2}'), url('${brick_wall}')` }}
+        >
             {errorPass ? 
                 <PopUp
                     message={messagePass}
@@ -98,9 +105,10 @@ export default function SignUp(){
                     label='Repita a senha'
                     error={errorPass}
                 />
-                <div className={styles.actions}>
-                    <button type='submit'>Cadastrar</button>
-                </div>
+                <Button 
+                    type='submit'
+                    text='Cadastrar'
+                />
             </form>
         </section>
     );

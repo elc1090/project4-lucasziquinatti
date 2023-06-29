@@ -39,6 +39,7 @@ exports.new_user = async (req, res) => {
 exports.find_user = async (req, res, next) => {
     const { username } = req.body;
     const db = await connectionToDatabase();
+
     let collection = await db.collection('users');
     let query = { username:username };
 
@@ -54,50 +55,28 @@ exports.find_user = async (req, res, next) => {
 }
 
 exports.get_ranking = async (req, res) => {
-    return res.status(200).json({
-        rank: [
-            {
-                username: 'testeBot',
-                bestTime: 150,
-            },
-            {
-                username: 'Lucas',
-                bestTime: 0,
-            },
-            {
-                username: 'testeBot2.0',
-                bestTime: 0,
-            },
-            {
-                username: 'testeBot2.0',
-                bestTime: 0,
-            },
-            {
-                username: 'testeBot2.0',
-                bestTime: 0,
-            },
-            {
-                username: 'testeBot2.0',
-                bestTime: 0,
-            },
-            {
-                username: 'testeBot2.0',
-                bestTime: 0,
-            },
-            {
-                username: 'testeBot2.0',
-                bestTime: 0,
-            },
-            {
-                username: 'testeBot2.0',
-                bestTime: 0,
-            },
-            {
-                username: 'testeBot2.0',
-                bestTime: 0,
-            },
-        ],
-    })
+    const db = await connectionToDatabase();
+    let collection = await db.collection('users');
+
+    const query = {};
+
+    const options = {
+        sort: { bestTime: -1 },
+        limit: 10,
+        projection: { _id: 0, username: 1, bestTime: 1 },
+    };
+
+    const cursor = collection.find(query, options);
+
+    let resp = { rank: [] };
+
+    for await (const doc of cursor){
+        resp.rank.push(doc);
+    }
+
+    // console.log(resp);
+
+    return res.status(200).json(resp);
 }
 
 exports.user_update = async (req, res) => {

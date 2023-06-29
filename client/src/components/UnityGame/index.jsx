@@ -14,7 +14,7 @@ export default function UnityGame(){
                 unityProvider={unityProvider}
                 width={960}
                 height={540}
-                style={{ width: '960px', height: '540px', background: '#1F1F20' }}
+                style={{ width: '1024px', height: '768px', background: '#1F1F20' }}
             />
         </div>
     );

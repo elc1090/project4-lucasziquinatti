@@ -1,0 +1,28 @@
+.actions {
+    text-align: center;
+    margin-top: 42px;
+}
+
+.actions button {
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    background-color: var(--lightorange);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px var(--darkorange);
+    margin: 0 24px;
+  }
+  
+.actions button:hover {
+    background-color: var(--orange);
+}
+  
+.actions button:active {
+    background-color: var(--orange);
+    box-shadow: 0 5px var(--darkorange);
+    transform: translateY(4px);
+}
