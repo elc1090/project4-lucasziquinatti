@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [exist, setExist] = useState(false);
+    const [find, setFind] = useState(true);
 
     useEffect(() => {
         const tokenValid = async () => {
@@ -38,6 +39,7 @@ export const AuthProvider = ({ children }) => {
 
         if(!response.data.find){
             console.log('Usuário ou Senha incorretos!!');
+            setFind(false);
         }
         else {
             const loggedUser = response.data.user;
@@ -95,7 +97,18 @@ export const AuthProvider = ({ children }) => {
 
     return(
         <AuthContext.Provider
-            value={{ authenticated: !!user, user, loading, exist, login, logout, signup, setExist, update }}
+            value={{ 
+                authenticated: !!user,
+                user,
+                loading,
+                exist,
+                find,
+                login,
+                logout,
+                signup,
+                setExist,
+                setFind,
+                update }}
         >
             {children}
         </AuthContext.Provider>

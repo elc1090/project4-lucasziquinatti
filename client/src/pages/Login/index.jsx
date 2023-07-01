@@ -5,9 +5,10 @@ import { AuthContext } from "../../contexts/auth";
 import styles from "./Login.module.css";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import PopUp from "../../components/PopUp";
 
 export default function Login(){
-    const { login } = useContext(AuthContext);
+    const { login, find, setFind } = useContext(AuthContext);
     const [user, setUser] = useState({ username:'', password:'' });
 
     const brick_wall = process.env.PUBLIC_URL + "/assets/brick-wall2.jpg";
@@ -29,6 +30,13 @@ export default function Login(){
             className={styles.login}
             style={{ backgroundImage: `url('${background_image2}'), url('${brick_wall}')` }}
         >
+            {!find ? 
+                <PopUp
+                    message={'Usuário ou Senha incorretos!!!'}
+                    close={() => {setFind(true)}}
+                />:
+                ''
+            }
             <form className={styles.formulario} onSubmit={handleSubmit}>
                 <h2 className={styles.title}>ENTRAR</h2>
                 <Input 
@@ -38,7 +46,7 @@ export default function Login(){
                     name='username'
                     id='username'
                     label='Usuário'
-                    error={null}
+                    error={!find}
                 />
                 <Input 
                     handleChange={handleChange}
@@ -47,7 +55,7 @@ export default function Login(){
                     name='password'
                     id='password'
                     label='Senha'
-                    error={null}
+                    error={!find}
                 />
                 <Button 
                     type='submit'

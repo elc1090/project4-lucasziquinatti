@@ -22,12 +22,15 @@ export default function SignUp(){
     useEffect(() => {
         if(exist){
             setErrorUser(true);
-            setMessageUser('Este usuário já está cadastrado!');
+            setMessageUser('Este usuário já existe!');
         }
     }, [exist])
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setErrorUser(false);
+        setExist(false);
+        setErrorPass(false);
 
         if(user.username === '' || user.username.trim() === ''){
             setErrorUser(true);

@@ -1,12 +1,41 @@
+import { useCallback, useContext, useEffect } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
+import { AuthContext } from "../../contexts/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function UnityGame(){
-    const { unityProvider } = useUnityContext({
-        loaderUrl: "/unity/2.loader.js",
-        dataUrl: "/unity/2.data",
-        frameworkUrl: "/unity/2.framework.js",
-        codeUrl: "/unity/2.wasm",
-    })
+    const { user, update } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    const { unityProvider, sendMessage, addEventListener, removeEventListener } = useUnityContext({
+        loaderUrl: "/unity/gameV4.loader.js",
+        dataUrl: "/unity/gameV4.data",
+        frameworkUrl: "/unity/gameV4.framework.js",
+        codeUrl: "/unity/gameV4.wasm",
+    });
+
+    const handleGameOver = useCallback((time) => {
+        console.log(`Tempo sobrevivido: ${time}`);
+        if(time > user.bestTime){
+            const newUser = {...user, bestTime: time};
+            update(newUser);
+        }
+        else {
+            navigate(`/profile`);
+        }
+    });
+
+    useEffect(() => {
+        sendMessage("Jogador", "DefinirSkin", user.idSkin);
+    });
+
+    useEffect(() => {
+        addEventListener("SetTime", handleGameOver);
+        return () => {
+            removeEventListener("SetTime", handleGameOver);
+        };
+    }, [addEventListener, removeEventListener, handleGameOver]);
 
     return(
         <div>
